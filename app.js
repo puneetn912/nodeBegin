@@ -1,17 +1,23 @@
+// 2> Express Config 
+var express = require('express');
+var app = express();
+
+let router = express.Router()
+
+router.get('/', (req, res)=>{
+    res.send('hello boi')
+})
+app.use('/', router);
+
+
+// 1> Server config
 const http = require('http');
-
 const port = 3003;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+const server = http.createServer(app);
 
 server.listen(port, () => {
   console.log(`Server running at port 3003`);
 });
 
-let app = require('express')
 
-let router = app.Router()
+
